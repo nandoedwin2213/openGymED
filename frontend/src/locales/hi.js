@@ -234,6 +234,8 @@ export default {
   '5×5': '5×5',
   'Five sets of five on the main barbell lifts.': 'मुख्य बारबेल लिफ़्ट पर पाँच सेट, पाँच रेप।',
   'Build my own plan': 'अपनी योजना बनाएँ',
+  '{0} workout': '{0} वर्कआउट',
+  '1 week streak': '1 हफ़्ते की स्ट्रीक',
   '{0} week streak': '{0} हफ़्तों की स्ट्रीक',
   'this week': 'इस हफ़्ते',
   '{0} workout total': 'कुल {0} वर्कआउट',

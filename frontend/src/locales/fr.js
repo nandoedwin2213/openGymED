@@ -234,6 +234,8 @@ export default {
   '5×5': '5×5',
   'Five sets of five on the main barbell lifts.': 'Cinq séries de cinq sur les gros mouvements à la barre.',
   'Build my own plan': 'Créer mon propre plan',
+  '{0} workout': '{0} séance',
+  '1 week streak': 'série de 1 semaine',
   '{0} week streak': 'série de {0} semaines',
   'this week': 'cette semaine',
   '{0} workout total': '{0} séance au total',

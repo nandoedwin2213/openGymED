@@ -13,6 +13,7 @@ import { modeOf, fmtSec, isBw, isPerSide, sideReps, MAX_PLANNED_WARMUPS } from '
 import { deriveSessionName } from './session-merge.js'
 import { uid, todayISO, DAYN, weekOrder, weekStartOf, fmtNum, exCount } from './format.js'
 import { t, exerciseNameFor } from './i18n-core.js'
+import { APP_NAME } from './brand.js'
 
 const PLAN_FMT = 1
 const WEEK_DAYS = [1, 2, 3, 4, 5, 6, 0]   // every getDay() index; only the reader's own
@@ -322,7 +323,7 @@ export function planPrintHTML(S, owner) {
 </style></head>
 <body><div class="doc">
   <header>
-    <div class="kicker">openGym</div>
+    <div class="kicker">${APP_NAME}</div>
     <h1>${esc(t('Weekly Training Plan'))}</h1>
     ${sub ? `<div class="sub">${sub}</div>` : ''}
   </header>
@@ -330,7 +331,7 @@ export function planPrintHTML(S, owner) {
   ${weekHTML(S)}
   <h3 class="block">${esc(t('Routines'))}</h3>
   ${body}
-  <footer>${esc(t('Made with openGym'))} · opengym.duarte-santos.ch</footer>
+  <footer>${esc(t('Made with openGym'))}</footer>
 </div></body></html>`
 }
 

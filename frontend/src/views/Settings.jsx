@@ -19,6 +19,7 @@ import { ConnectSheet } from './MobileOnboarding.jsx'
 import { starterPlanSheet, confirmSheet, importFromApp, importFromHevy, equipmentProfileSheet, menuSheet, askAddDeviceData } from '../sheets.jsx'
 import Icon from '../components/Icon.jsx'
 import { Section, Row, SelectRow, Switch, Segmented, Button, TextField } from '../components/ui.jsx'
+import { APP_NAME } from '../lib/brand.js'
 
 export default function Settings() {
   const nav = useNavigate()
@@ -405,18 +406,14 @@ export default function Settings() {
     {/* ---------- updates: the last thing on the page, so keeping openGym current is one tap ----------
         On Android the row is always there — it checks on demand and installs when a release is
         newer (checksum verified, see onUpdateRowClick). On the web the app updates with its
-        server, so the row points at the APK for the phone instead. iOS has no APK: nothing. */}
-    {(!MOBILE || android) && <Section title={t('Updates')}
-      footer={MOBILE ? t('Releases are checked on gitlab.com. The download is verified against its checksum before the installer opens.') : t('The web app updates together with your server. The Android app installs its own updates from here.')}>
-      {MOBILE
-        ? <Row icon="download" iconTint="var(--acc)"
-            title={updateInfo?.hasUpdate ? t('Update to openGym v{0}', updateInfo.latestVersion) : t('Check for updates')}
-            subtitle={checking ? t('Checking…') : t('You have v{0}', __APP_VERSION__)}
-            accessory="chevron"
-            onClick={() => (updateInfo?.hasUpdate ? onUpdateRowClick() : checkNow())} />
-        : <Row icon="download" iconTint="var(--acc)" title={t('Get the Android app')}
-            subtitle={t('Download the APK from opengym.duarte-santos.ch')} accessory="chevron"
-            onClick={() => window.open('https://opengym.duarte-santos.ch/#download', '_blank', 'noopener')} />}
+        server. iOS has no APK: nothing. */}
+    {MOBILE && android && <Section title={t('Updates')}
+      footer={t('Releases are checked on gitlab.com. The download is verified against its checksum before the installer opens.')}>
+      <Row icon="download" iconTint="var(--acc)"
+        title={updateInfo?.hasUpdate ? t('Update to openGym v{0}', updateInfo.latestVersion) : t('Check for updates')}
+        subtitle={checking ? t('Checking…') : t('You have v{0}', __APP_VERSION__)}
+        accessory="chevron"
+        onClick={() => (updateInfo?.hasUpdate ? onUpdateRowClick() : checkNow())} />
     </Section>}
 
     {/* The version, at the bottom of Settings — which is where the support template has been
@@ -424,8 +421,8 @@ export default function Settings() {
         address bar and no about box, so without this there is no way to tell which build you
         are running, or whether an update actually installed. */}
     <div className="dim small" style={{ textAlign: 'center', marginTop: 4, lineHeight: 1.6 }}>
-      openGym v{__APP_VERSION__} · {t('free & open source (AGPL v3)')}<br />
-      <a href="https://gitlab.com/DuarteSantos8/opengym" target="_blank" rel="noopener">source code</a> · exercise data: hasaneyldrm/exercises-dataset (MIT)<br />
+      {APP_NAME} v{__APP_VERSION__} · {t('free & open source (AGPL v3)')}<br />
+      <a href={REPO} target="_blank" rel="noopener">source code</a> · based on <a href="https://github.com/DuarteSantos8/openGym" target="_blank" rel="noopener">openGym</a> · exercise data: hasaneyldrm/exercises-dataset (MIT)<br />
       exercise images and animations © <a href="https://gymvisual.com/" target="_blank" rel="noopener">Gym visual</a>
     </div>
   </div>
