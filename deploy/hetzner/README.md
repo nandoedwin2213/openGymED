@@ -19,7 +19,11 @@ Caddy (`/etc/caddy/Caddyfile`) terminates TLS: app host → `reverse_proxy 127.0
 - `deploy.sh [branch]` — pull, build `web/Dockerfile`, back up, `compose up`, health-check,
   refresh landing. Run after merging to `main`.
 - `backup.sh` — cron 03:17 daily (`/etc/cron.d/fisai-gym`). Copies off-site too if an rclone
-  remote named `fisai-backup` exists (`rclone config` once, e.g. Hetzner Storage Box).
+  remote named `fisai-backup` exists. Production uses a Hetzner Storage Box sub-user over SFTP
+  (port 23, chrooted to its own directory); remote copies live in `fisai-backup:fisai-gym/` and are
+  kept 90 days. Credentials live only in `/root/.config/rclone/rclone.conf` (mode 600). To recreate:
+  `rclone config create fisai-backup sftp host <box>.your-storagebox.de user <subuser> port 23 pass "$(rclone obscure '<pw>')" --obscure=false`.
+  Restore test: `rclone copy fisai-backup:fisai-gym/<file> /tmp/rt/ && tar xzf /tmp/rt/<file> -C /tmp/rt`.
 - `watchdog.sh` — cron every 5 min; restarts the stack/Caddy if the public URLs stop answering.
   Put `HEALTHCHECKS_URL=https://hc-ping.com/…` in `/opt/fisai-gym/watchdog.env` for alerts.
 
