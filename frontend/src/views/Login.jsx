@@ -93,10 +93,10 @@ export default function Login() {
         // so say that plainly instead of offering a local profile that cannot be created.
         : t("This browser doesn't support passkeys, and this instance requires an account. Try a browser or device with passkey support.")}</div>}
       {canGuest && <Button variant="ghost" className="dim" onClick={() => setGuest(true)}>{t('Continue without account')}</Button>}
-      <div className="card small muted" style={{ textAlign: 'left', marginTop: 26, lineHeight: 1.55 }}>
+      {webauthnOK() && <div className="card small muted" style={{ textAlign: 'left', marginTop: 26, lineHeight: 1.55 }}>
         <b>{t('First time here?')}</b> {t('Tap “Create new profile”, enter your name{0} and confirm with {1}.', inviteOnly ? t(' and your invite code') : '', t(BIO))}<br />
         <b>{t('Already have a profile?')}</b> {t('Tap “Sign in with passkey”.')}
-      </div>
+      </div>}
       <div className="dim small" style={{ marginTop: 14, lineHeight: 1.5 }}>{t('Passkeys use {0} — no passwords.', t(BIO))}<br />{t('Each profile keeps its own plan, workouts & body weight.')}</div>
     </div>
   )
