@@ -1,7 +1,7 @@
 /* FISAI Gym landing: language toggle (ES default, EN) + app link. Fails soft: the page
    is complete Spanish HTML without any of this. */
 ;(function () {
-  var APP_URL = 'https://gym-95-217-188-12.sslip.io'
+  var APP_URL = 'https://app.gymfisai.com'
 
   var EN = {
     'meta.title': 'FISAI Gym — your gym & body-weight coach',
