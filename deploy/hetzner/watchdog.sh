@@ -8,8 +8,8 @@ ROOT=/opt/fisai-gym
 log() { echo "$(date -Is) $*" >> "$ROOT/watchdog.log"; }
 
 ok=1
-curl -fsS -m 10 https://gym-95-217-188-12.sslip.io/api/health >/dev/null || { ok=0; log "app down"; }
-curl -fsS -m 10 -o /dev/null https://fisai-95-217-188-12.sslip.io/ || { ok=0; log "landing down"; }
+curl -fsS -m 10 https://app.gymfisai.com/api/health >/dev/null || { ok=0; log "app down"; }
+curl -fsS -m 10 -o /dev/null https://gymfisai.com/ || { ok=0; log "landing down"; }
 
 if [ $ok = 0 ]; then
   (cd "$ROOT" && docker compose up -d web api >/dev/null 2>&1) && log "restarted stack"

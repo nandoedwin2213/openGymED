@@ -14,7 +14,7 @@ deploy.sh backup.sh watchdog.sh
 ```
 
 Caddy (`/etc/caddy/Caddyfile`) terminates TLS: app host → `reverse_proxy 127.0.0.1:8081`,
-landing host → `file_server` on `/opt/fisai-gym/landing`.
+`gymfisai.com` (+`www` redirect) → `file_server` on `/opt/fisai-gym/landing`.
 
 - `deploy.sh [branch]` — pull, build `web/Dockerfile`, back up, `compose up`, health-check,
   refresh landing. Run after merging to `main`.
