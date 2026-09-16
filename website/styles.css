@@ -89,6 +89,9 @@ figcaption { text-align: center; color: var(--fg-2); font-size: 14px; margin-top
 
 .panel { background: linear-gradient(160deg, var(--acc-soft), var(--surface) 60%); border: 1px solid var(--hair); border-radius: 28px; padding: clamp(28px, 5vw, 56px); text-align: center; }
 .panel p { max-width: 62ch; margin: 14px auto 26px; font-size: 18px; }
+.panel .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.panel .steps { text-align: left; max-width: 52ch; margin: 30px auto 0; padding-left: 26px; color: var(--fg-2); display: grid; gap: 10px; font-size: 16px; }
+.panel .steps li::marker { color: var(--acc); font-weight: 700; }
 
 footer { border-top: 1px solid var(--hair); padding: 36px 0 calc(36px + env(safe-area-inset-bottom)); }
 .foot p { font-size: 14px; }
