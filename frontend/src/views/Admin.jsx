@@ -6,6 +6,7 @@ import { api } from '../lib/api.js'
 import { fmtDate, fmtNum, fmtVol, fmtDur } from '../lib/format.js'
 import { auditCat, auditLine, fmtWhen } from '../lib/audit.js'
 import { workoutVolume, setsDone } from '../lib/history.js'
+import { inviteMessage, whatsappShareUrl } from '../lib/invite-message.js'
 import { confirmSheet } from '../sheets.jsx'
 import Icon from '../components/Icon.jsx'
 import { Button } from '../components/ui.jsx'
@@ -85,6 +86,7 @@ function InvitesCard({ invites, reload, inviteOnly }) {
       .then(() => { toast('Code revoked'); reload() }).catch(e => toast(e.message))
   })
   const copy = code => { navigator.clipboard?.writeText(code).catch(() => {}); toast('Copied ' + code) }
+  const copyMsg = code => { navigator.clipboard?.writeText(inviteMessage(code)).catch(() => {}); toast('Welcome message copied') }
   const open = (invites || []).filter(i => !i.usedBy)
   const used = (invites || []).filter(i => i.usedBy)
   return <div className="card">
@@ -100,7 +102,8 @@ function InvitesCard({ invites, reload, inviteOnly }) {
       {open.map(i => <div key={i.code} className="row between" style={{ padding: '6px 0', borderBottom: 'var(--hair) solid var(--sep)' }}>
         <button className="adm-code" onClick={() => copy(i.code)} aria-label={'copy ' + i.code}>{i.code}</button>
         <div className="row" style={{ gap: 4 }}>
-          <button className="iconbtn adm-iconbtn" onClick={() => copy(i.code)} aria-label="copy"><Icon name="clipboard" /></button>
+          <a className="iconbtn adm-iconbtn" href={whatsappShareUrl(i.code)} target="_blank" rel="noopener" aria-label="send welcome message on WhatsApp" style={{ color: 'var(--acc)' }}><Icon name="link" /></a>
+          <button className="iconbtn adm-iconbtn" onClick={() => copyMsg(i.code)} aria-label="copy welcome message"><Icon name="clipboard" /></button>
           <button className="iconbtn adm-iconbtn" style={{ color: 'var(--red)' }} onClick={() => revoke(i.code)} aria-label="revoke"><Icon name="trash" /></button>
         </div>
       </div>)}
@@ -112,6 +115,7 @@ function InvitesCard({ invites, reload, inviteOnly }) {
       </div>)}
     </> : null}
     {!open.length && !used.length && <div className="adm-empty">No codes yet. "New code" makes one and copies it to your clipboard.</div>}
+    <div className="adm-hint">Each unused code has a WhatsApp button that opens a ready welcome message (benefits + sign-up steps with the code filled in); the clipboard button copies that same text.</div>
   </div>
 }
 
