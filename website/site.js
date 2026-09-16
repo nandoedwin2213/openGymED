@@ -54,6 +54,9 @@
     'and.2': 'Tap the \u22ee menu, then \u201cInstall app\u201d.',
     'and.3': 'Done: it works like any other app.',
     'foot.based': 'Based on', 'foot.source': 'source code',
+    'foot.privacy': 'Privacy', 'foot.terms': 'Terms',
+    'legal.home': 'Home', 'legal.privacy': 'Privacy', 'legal.terms': 'Terms of use',
+    'legal.privacy.title': 'Privacy policy — FISAI Gym', 'legal.terms.title': 'Terms of use — FISAI Gym',
     'foot.media': 'Exercise images \u00a9 Gym visual, used under the terms of the hasaneyldrm/exercises-dataset.',
   }
 
@@ -71,6 +74,7 @@
     each('[data-i18n-alt]', function (el) { var v = d[el.getAttribute('data-i18n-alt')]; if (v != null) el.setAttribute('alt', v) })
     each('.lang [data-lang]', function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)) })
     document.documentElement.lang = lang
+    each('[data-lang-section]', function (el) { el.hidden = el.getAttribute('data-lang-section') !== lang })
     waLinks(lang)
     try { localStorage.setItem('fisai-lang', lang) } catch (e) {}
   }

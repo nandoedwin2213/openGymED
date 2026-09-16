@@ -97,7 +97,8 @@ export default function Login() {
         <b>{t('First time here?')}</b> {t('Tap “Create new profile”, enter your name{0} and confirm with {1}.', inviteOnly ? t(' and your invite code') : '', t(BIO))}<br />
         <b>{t('Already have a profile?')}</b> {t('Tap “Sign in with passkey”.')}
       </div>}
-      <div className="dim small" style={{ marginTop: 14, lineHeight: 1.5 }}>{t('Passkeys use {0} — no passwords.', t(BIO))}<br />{t('Each profile keeps its own plan, workouts & body weight.')}</div>
+      <div className="dim small" style={{ marginTop: 14, lineHeight: 1.5 }}>{t('Passkeys use {0} — no passwords.', t(BIO))}<br />{t('Each profile keeps its own plan, workouts & body weight.')}<br />
+        <a href="https://gymfisai.com/privacidad.html" target="_blank" rel="noopener">{t('Privacy')}</a> · <a href="https://gymfisai.com/terminos.html" target="_blank" rel="noopener">{t('Terms')}</a></div>
     </div>
   )
 }

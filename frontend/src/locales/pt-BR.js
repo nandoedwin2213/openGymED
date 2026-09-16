@@ -671,6 +671,16 @@ export const PT_BR_OVERRIDES = {
   'Download & Install': 'Baixar e instalar',
   'Starting download…': 'Iniciando download…',
   'Downloading update…': 'Baixando atualização…',
+  'fingerprint or face unlock': 'impressão digital ou reconhecimento facial',
+  'your fingerprint, face or PIN': 'sua impressão digital, rosto ou PIN',
+  'Don’t have one? Ask your coach.': 'Não tem? Peça ao seu treinador.',
+  'First time here?': 'Primeira vez aqui?',
+  'Tap “Create new profile”, enter your name{0} and confirm with {1}.': 'Toque em “Criar novo perfil”, digite seu nome{0} e confirme com {1}.',
+  ' and your invite code': ' e seu código de convite',
+  'Already have a profile?': 'Já tem perfil?',
+  'Tap “Sign in with passkey”.': 'Toque em “Entrar com passkey”.',
+  'Privacy': 'Privacidade',
+  'Terms': 'Termos',
 }
 
 export default { ...pt, ...PT_BR_OVERRIDES }

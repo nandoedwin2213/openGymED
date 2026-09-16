@@ -298,6 +298,8 @@ export default {
   ' and your invite code': ' y tu código de invitación',
   'Already have a profile?': '¿Ya tienes perfil?',
   'Tap “Sign in with passkey”.': 'Toca «Iniciar sesión con passkey».',
+  'Privacy': 'Privacidad',
+  'Terms': 'Términos',
   'Each profile keeps its own plan, workouts & body weight.': 'Cada perfil guarda su propio plan, entrenamientos y peso corporal.',
   'Account': 'Cuenta',
   'Signed in with passkey — data syncs to this profile.': 'Sesión iniciada con passkey — los datos se sincronizan con este perfil.',

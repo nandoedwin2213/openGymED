@@ -116,3 +116,10 @@ footer { border-top: 1px solid var(--hair); padding: 36px 0 calc(36px + env(safe
   .shots { grid-template-columns: repeat(2, 1fr); }
   .shots figure:nth-child(n+3) { display: none; }
 }
+
+.legal { padding-block: 48px 72px; max-width: 72ch; }
+.legal h1 { font-size: clamp(30px, 4vw, 42px); margin-bottom: 6px; }
+.legal h2 { font-size: 20px; margin: 30px 0 8px; }
+.legal p, .legal li { color: var(--fg-2); line-height: 1.6; }
+.legal ul { padding-left: 22px; display: grid; gap: 6px; }
+.legal a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
