@@ -13,5 +13,6 @@ chmod 600 "$file"
 find "$OUT" -name 'fisai-gym-*.tar.gz' -mtime +30 -delete
 if command -v rclone >/dev/null && rclone listremotes | grep -q '^fisai-backup:'; then
   rclone copy "$file" fisai-backup:fisai-gym/ --quiet
+  rclone delete fisai-backup:fisai-gym/ --min-age 90d --quiet || true
 fi
 echo "$(date -Is) ok $file $(du -h "$file" | cut -f1)" >> "$OUT/backup.log"
