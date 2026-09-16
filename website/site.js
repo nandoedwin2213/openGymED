@@ -2,6 +2,11 @@
    is complete Spanish HTML without any of this. */
 ;(function () {
   var APP_URL = 'https://app.gymfisai.com'
+  var WA_NUMBER = '593989049001'
+  var WA_MSG = {
+    es: 'Hola, quiero un código de invitación para FISAI Gym.',
+    en: 'Hi, I would like an invite code for FISAI Gym.'
+  }
 
   var EN = {
     'meta.title': 'FISAI Gym — your gym & body-weight coach',
@@ -32,8 +37,14 @@
     'screens.title': 'Five screens, and that\u2019s the app.',
     's.home': 'Home', 's.plan': 'Plan', 's.stats': 'Progress', 's.library': 'Exercises', 's.history': 'History',
     'access.title': 'Invite-only access',
-    'access.p': 'FISAI Gym is private: you need an invite code to create your profile. Ask your coach or the FISAI team, then set it up in under a minute with your phone\u2019s fingerprint or face.',
+    'access.p': 'FISAI Gym is private: you need an invite code to create your profile. Ask for one on WhatsApp, then set it up in under a minute with your phone’s fingerprint or face.',
+    'access.wa': 'Request a code on WhatsApp',
     'access.cta': 'I have a code — sign in',
+    'steps.1': 'Open app.gymfisai.com in your phone’s browser.',
+    'steps.2': 'Tap “Create new profile”.',
+    'steps.3': 'Type your name and paste the invite code.',
+    'steps.4': 'Tap “Create passkey” and confirm with fingerprint, face or PIN.',
+    'steps.5': 'Next time, tap “Sign in with passkey”. No passwords.',
     'install.title': 'Install it as an app',
     'install.sub': 'No app store: add it to your home screen from the browser.',
     'ios.1': 'Open FISAI Gym in Safari.',
@@ -60,7 +71,13 @@
     each('[data-i18n-alt]', function (el) { var v = d[el.getAttribute('data-i18n-alt')]; if (v != null) el.setAttribute('alt', v) })
     each('.lang [data-lang]', function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)) })
     document.documentElement.lang = lang
+    waLinks(lang)
     try { localStorage.setItem('fisai-lang', lang) } catch (e) {}
+  }
+
+  function waLinks(l) {
+    var href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_MSG[l] || WA_MSG.es)
+    each('.wa-link', function (a) { a.href = href })
   }
 
   var lang = 'es'
@@ -72,5 +89,6 @@
   each('.lang [data-lang]', function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')) }) })
 
   each('.app-link', function (a) { a.href = APP_URL })
+  if (lang === 'es') waLinks('es')
   var y = document.getElementById('year'); if (y) y.textContent = String(new Date().getFullYear())
 })()
