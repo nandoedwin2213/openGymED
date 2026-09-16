@@ -29,7 +29,7 @@ done
 
 # landing
 rm -rf "$ROOT/landing.new" && mkdir -p "$ROOT/landing.new"
-cp -r "$SRC/website/index.html" "$SRC/website/site.js" "$SRC/website/styles.css" "$SRC/website/robots.txt" "$SRC/website/img" "$ROOT/landing.new/"
+cp -r "$SRC/website/"*.html "$SRC/website/site.js" "$SRC/website/styles.css" "$SRC/website/robots.txt" "$SRC/website/img" "$ROOT/landing.new/"
 cp "$SRC/frontend/public/icon-180.png" "$SRC/frontend/public/icon-512.png" "$ROOT/landing.new/"
 rm -rf "$ROOT/landing.old"; mv "$ROOT/landing" "$ROOT/landing.old" 2>/dev/null || true
 mv "$ROOT/landing.new" "$ROOT/landing"
