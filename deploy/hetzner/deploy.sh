@@ -16,6 +16,8 @@ docker build -q -t "fisai-gym-web:$sha" -f web/Dockerfile .
 docker tag "fisai-gym-web:$sha" fisai-gym-web:current
 
 cd "$ROOT"
+# keep ops scripts in sync with the repo (deploy.sh itself is picked up on the next run)
+cp "$SRC/deploy/hetzner/backup.sh" "$SRC/deploy/hetzner/watchdog.sh" "$ROOT/" && chmod 700 "$ROOT/backup.sh" "$ROOT/watchdog.sh"
 "$ROOT/backup.sh"
 docker compose up -d --remove-orphans web api
 
