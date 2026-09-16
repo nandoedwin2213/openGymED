@@ -234,6 +234,8 @@ export default {
   '5×5': '5×5',
   'Five sets of five on the main barbell lifts.': 'Ana halter hareketlerinde beşer tekrarlı beş set.',
   'Build my own plan': 'Kendi planımı oluştur',
+  '{0} workout': '{0} antrenman',
+  '1 week streak': '1 haftalık seri',
   '{0} week streak': '{0} haftalık seri',
   'this week': 'bu hafta',
   '{0} workout total': 'toplam {0} antrenman',

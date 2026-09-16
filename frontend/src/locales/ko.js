@@ -234,6 +234,8 @@ export default {
   '5×5': '5×5',
   'Five sets of five on the main barbell lifts.': '주요 바벨 종목을 5세트 5회로.',
   'Build my own plan': '내 계획 만들기',
+  '{0} workout': '운동 {0}회',
+  '1 week streak': '1주 연속',
   '{0} week streak': '{0}주 연속',
   'this week': '이번 주',
   '{0} workout total': '총 운동 {0}회',

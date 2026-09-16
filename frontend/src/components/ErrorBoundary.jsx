@@ -3,6 +3,7 @@ import { useStore } from '../store/useStore.js'
 import { t } from '../lib/i18n.js'
 import Icon from './Icon.jsx'
 import { Button } from './ui.jsx'
+import { APP_NAME } from '../lib/brand.js'
 
 /**
  * Last line of defence: one bad render used to blank the whole app, with no way back —
@@ -15,7 +16,7 @@ import { Button } from './ui.jsx'
 export default class ErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { failed: false } }
   static getDerivedStateFromError() { return { failed: true } }
-  componentDidCatch(err) { console.error('openGym render error:', err) }
+  componentDidCatch(err) { console.error(APP_NAME + ' render error:', err) }
 
   render() {
     if (!this.state.failed) return this.props.children

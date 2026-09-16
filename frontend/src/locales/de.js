@@ -243,6 +243,8 @@ export default {
   '5×5': '5×5',
   'Five sets of five on the main barbell lifts.': 'Fünf Sätze à fünf bei den großen Langhantelübungen.',
   'Build my own plan': 'Eigenen Plan erstellen',
+  '{0} workout': '{0} Training',
+  '1 week streak': '1 Woche in Folge',
   '{0} week streak': '{0} Wochen in Folge',
   'this week': 'diese Woche',
   '{0} workout total': 'insgesamt {0} Training',

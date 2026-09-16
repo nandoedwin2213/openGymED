@@ -1,7 +1,7 @@
 {
-  "name": "openGym",
-  "short_name": "openGym",
-  "description": "Personal gym & body weight tracker",
+  "name": "FISAI Gym",
+  "short_name": "FISAI Gym",
+  "description": "FISAI Gym — tu entrenador de gimnasio y peso corporal",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
