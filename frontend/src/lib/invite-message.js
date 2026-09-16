@@ -1,9 +1,8 @@
 // Ready-to-send WhatsApp welcome text for a new client: benefits + the four sign-up steps with
 // their personal invite code filled in. Spanish only — it is what the coach forwards to clients.
 
-export const APP_URL = 'https://app.gymfisai.com'
-
-export function inviteMessage(code, appUrl = APP_URL) {
+// The sign-up link must point at the instance that issued the code, so callers pass their origin.
+export function inviteMessage(code, appUrl) {
   return [
     '¡Hola! 👋 Te doy la bienvenida a *FISAI Gym*, la app con la que vamos a llevar tu entrenamiento de forma ordenada y segura.',
     '',
@@ -26,4 +25,4 @@ export function inviteMessage(code, appUrl = APP_URL) {
   ].join('\n')
 }
 
-export const whatsappShareUrl = code => 'https://wa.me/?text=' + encodeURIComponent(inviteMessage(code))
+export const whatsappShareUrl = (code, appUrl) => 'https://wa.me/?text=' + encodeURIComponent(inviteMessage(code, appUrl))
