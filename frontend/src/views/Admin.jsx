@@ -86,7 +86,12 @@ function InvitesCard({ invites, reload, inviteOnly }) {
       .then(() => { toast('Code revoked'); reload() }).catch(e => toast(e.message))
   })
   const copy = code => { navigator.clipboard?.writeText(code).catch(() => {}); toast('Copied ' + code) }
-  const copyMsg = code => { navigator.clipboard?.writeText(inviteMessage(code)).catch(() => {}); toast('Welcome message copied') }
+  const appUrl = window.location.origin
+  const copyMsg = code => {
+    if (!navigator.clipboard) { toast('Clipboard unavailable'); return }
+    navigator.clipboard.writeText(inviteMessage(code, appUrl))
+      .then(() => toast('Welcome message copied')).catch(e => toast(e.message || 'Copy failed'))
+  }
   const open = (invites || []).filter(i => !i.usedBy)
   const used = (invites || []).filter(i => i.usedBy)
   return <div className="card">
@@ -102,7 +107,7 @@ function InvitesCard({ invites, reload, inviteOnly }) {
       {open.map(i => <div key={i.code} className="row between" style={{ padding: '6px 0', borderBottom: 'var(--hair) solid var(--sep)' }}>
         <button className="adm-code" onClick={() => copy(i.code)} aria-label={'copy ' + i.code}>{i.code}</button>
         <div className="row" style={{ gap: 4 }}>
-          <a className="iconbtn adm-iconbtn" href={whatsappShareUrl(i.code)} target="_blank" rel="noopener" aria-label="send welcome message on WhatsApp" style={{ color: 'var(--acc)' }}><Icon name="link" /></a>
+          <a className="iconbtn adm-iconbtn" href={whatsappShareUrl(i.code, appUrl)} target="_blank" rel="noopener" aria-label="send welcome message on WhatsApp" style={{ color: 'var(--acc)' }}><Icon name="link" /></a>
           <button className="iconbtn adm-iconbtn" onClick={() => copyMsg(i.code)} aria-label="copy welcome message"><Icon name="clipboard" /></button>
           <button className="iconbtn adm-iconbtn" style={{ color: 'var(--red)' }} onClick={() => revoke(i.code)} aria-label="revoke"><Icon name="trash" /></button>
         </div>
